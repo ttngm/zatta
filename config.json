@@ -1,7 +1,23 @@
 {
-    "host": "localhost",
-    "database": "postgres",
-    "user": "postgres",
-    "password": "postgres",
-    "port": 5432
+    "develop": {
+        "host": "localhost",
+        "database": "postgres",
+        "user": "postgres",
+        "password": "postgres",
+        "port": 5432
+    },
+    "test": {
+        "host": "localhost",
+        "database": null,
+        "user": "postgres",
+        "password": null,
+        "port": 5432
+    },
+    "product": {
+        "host": "localhost",
+        "database": null,
+        "user": "postgres",
+        "password": null,
+        "port": 5432
+    }
 }

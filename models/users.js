@@ -1,15 +1,31 @@
-// お試しコード
+'use strict';
 
-const config = require('../config.json')
-var { Client } = require('pg');
+const { DataTypes } = require("sequelize/types");
 
-// DB接続情報を設定
-var client = new Client(config)
-
-// DB接続
-client.connect()
-.then(() => console.log('Connected successfully'))
-.then(() => client.query("insert into users(id, name, password) values($1,$2,$3)",[2,'taro', 'password']))
-.then(results => console.table(results.rows))
-.catch((e => console.log(e)))
-.finally((() => client.end()))
+module.exports = function(sequilize, Datatypes) {
+    var Users = sequilize.define('Users', {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'user'
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'name'
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'password'
+        }
+    },{
+        classMethods: {
+            associate: function(models){
+                // associations can be defined here
+            }
+        },
+        tableName: "Users"
+    });
+    return Users;
+};

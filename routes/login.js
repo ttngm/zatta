@@ -1,8 +1,14 @@
 var express = require('express');
-var router = express.Router()
+var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    res.render('login', { title: 'login' });
+router.post('/', function (req, res) {
+    var username = JSON.stringify(req.body.username);
+    var pass = JSON.stringify(req.body.password);
+    console.log("name :" + username);
+    console.log("pass:" + pass);
+    res.render('index', { title: "aa" });
+
 });
+
 
 module.exports = router;

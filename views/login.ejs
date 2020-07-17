@@ -15,10 +15,34 @@
     </div>
     <br>
     <div class="login">
-        <input type="text" placeholder="username" name="user"><br>
-        <input type="password" placeholder="password" name="password"><br>
-        <input type="button" value="Login">
+        <input type="text" placeholder="username" id="user"><br>
+        <input type="password" placeholder="password" id="password"><br>
+        <input type="button" id="login" value="Login">
     </div>
+    <script>
+        document.getElementById("login").onclick = function () {
+            const userdata = document.getElementById("user").value;
+            const passdata = document.getElementById("password").value;
+            const json = {
+                "username": userdata,
+                "password": passdata
+            };
+            fetch('http://localhost:3000/login/', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(json),
+
+            }).then(response => {
+                return response.json();
+            }).then(res => {
+                console.log(res.items[0]);
+            }).catch(error => {
+                console.log(error);
+            });
+        };
+    </script>
 </body>
 
 </html>

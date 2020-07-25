@@ -6,6 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "amazon-cognito-js": "^1.1.0",
+    "aws-amplify": "^3.0.20",
+    "aws-sdk": "^2.716.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

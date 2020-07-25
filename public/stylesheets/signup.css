@@ -57,69 +57,53 @@ body{
     color: #fff !important;
 }
 
-.login{
+.signup{
     position: absolute;
     top: calc(50% - 75px);
     left: calc(50% - 50px);
     height: 250px;
-    width: 30px;
+    width: 300px;
     padding: 10px;
     z-index: 2;
 }
 
-.signup{
-    position: absolute;
-    top: calc(68% - 75px);
-    left: calc(50% - 50px);
-    height: 250px;
-    width: 30px;
-    padding: 10px;
-    z-index: 3;
+.signup p {
+    height: 25px;
+    width: 150px;
+    margin: auto;
+    color: rgb(26, 45, 219);
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.signup input[type=text]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
+
+.signup input[type=password]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
 }
 
 .signup input[type=button]{
-    width: 260px;
-    height: 35px;
-    background: #5379fa;
-    border: 1px solid #fff;
-    cursor: pointer;
-    border-radius: 2px;
-    color: #bbc7f1;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 6px;
-    margin-top: 10px;
-}
-
-.login input[type=text]{
-    width: 250px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 4px;
-}
-
-.login input[type=password]{
-    width: 250px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 4px;
-    margin-top: 10px;
-}
-
-.login input[type=button]{
     width: 260px;
     height: 35px;
     background: #fff;
@@ -134,25 +118,25 @@ body{
     margin-top: 10px;
 }
 
-.login input[type=button]:hover{
+.signup input[type=button]:hover{
     opacity: 0.8;
 }
 
-.login input[type=button]:active{
+.signup input[type=button]:active{
     opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.signup input[type=text]:focus{
     outline: none;
     border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=password]:focus{
+.signup input[type=password]:focus{
     outline: none;
     border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=button]:focus{
+.signup input[type=button]:focus{
     outline: none;
 }
 

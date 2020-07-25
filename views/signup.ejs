@@ -4,7 +4,7 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/login.css' />
+    <link rel='stylesheet' href='/stylesheets/signup.css' />
 </head>
 
 <body>
@@ -14,25 +14,24 @@
         <div>Z<span>atta</span></div>
     </div>
     <br>
-    <div class="login">
+    <div class="signup">
+        <p>new user</p>
+        <br>
         <input type="text" placeholder="username" id="user"><br>
         <input type="password" placeholder="password" id="password"><br>
-        <input type="button" id="login" value="Login">
+        <input type="button" id="signup" value="登録">
 
-    </div>
-    <div class="signup">
-        <input type="button" id="signup" onclick="location.href='/signup'" value="新規登録">
     </div>
     <script>
 
-        document.getElementById("login").onclick = function () {
+        document.getElementById("signup").onclick = function () {
             const userdata = document.getElementById("user").value;
             const passdata = document.getElementById("password").value;
             const json = {
                 "username": userdata,
                 "password": passdata
             };
-            fetch('http://localhost:3000/login/', {
+            fetch('http://localhost:3000/signup/', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

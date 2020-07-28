@@ -15,7 +15,6 @@
     <script src="./javascripts/sjcl.js"></script>
     <script src="./javascripts/aws-cognito-sdk.min.js"></script>
     <script src="./javascripts/amazon-cognito-identity.min.js"></script>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.5.2.min.js"></script>
     <script>
         // Amazon Cognito 認証情報プロバイダーを初期化します
         AWS.config.region = 'ap-northeast-1'; // リージョン
@@ -61,7 +60,6 @@
                 "Username": username,
                 "Password": passdata
             };
-            console.log(authenticationData);
             var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
             userpool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(data);
             var userdata = {
@@ -71,7 +69,15 @@
             cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userdata);
             cognitoUser.authenticateUser(authenticationDetails, {
                 onSuccess: function (authresult) {
-                    console.log('access token + ' + authresult.getIdToken().getJwtToken());
+                    const idToken = authresult.getIdToken().getJwtToken(); // IDトークン
+                    const accessToken = authresult.getAccessToken().getJwtToken(); // アクセストークン
+                    const refreshToken = authresult.getRefreshToken().getToken(); // 更新トークン
+
+                    console.log("idToken : " + idToken);
+                    console.log("accessToken : " + accessToken);
+                    console.log("refreshToken : " + refreshToken);
+                    // サインイン成功の場合、次の画面へ遷移
+                    location.href = "/top";
                 },
                 onFailure: function (err) {
                     alert(err.message);

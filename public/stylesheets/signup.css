@@ -19,7 +19,7 @@ body{
     bottom: -40px;
     width: auto;
     height: auto;
-    background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
+    background-image: url(../images/login_back-ground.jpg);
     background-size: cover;
     -webkit-filter: blur(5px);
     z-index: 0;
@@ -106,11 +106,11 @@ body{
 .signup input[type=button]{
     width: 260px;
     height: 35px;
-    background: #fff;
+    background: #5379fa;
     border: 1px solid #fff;
     cursor: pointer;
     border-radius: 2px;
-    color: #a18d6c;
+    color: #bbc7f1;
     font-family: 'Exo', sans-serif;
     font-size: 16px;
     font-weight: 400;

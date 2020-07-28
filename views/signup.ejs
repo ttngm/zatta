@@ -8,6 +8,35 @@
 </head>
 
 <body>
+    <!-- aws sdk //-->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.720.0.min.js"></script>
+    <script src="./javascripts/jsbn.js"></script>
+    <script src="./javascripts/jsbn2.js"></script>
+    <script src="./javascripts/sjcl.js"></script>
+    <script src="./javascripts/aws-cognito-sdk.min.js"></script>
+    <script src="./javascripts/amazon-cognito-identity.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.5.2.min.js"></script>
+    <script>
+        // Amazon Cognito 認証情報プロバイダーを初期化します
+        AWS.config.region = 'ap-northeast-1'; // リージョン
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'ap-northeast-1:af56baf2-032d-438b-8a41-d0b164e65431',
+        });
+
+        // Initialize the Amazon Cognito credentials provider
+        AWSCognito.config.region = 'ap-northeast-1'; // Region
+        AWSCognito.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'ap-northeast-1:af56baf2-032d-438b-8a41-d0b164e65431'
+        });
+        var data = {
+            UserPoolId: 'ap-northeast-1_2rzkFPWjz',
+            ClientId: '5r42t6grvv6m8osclqk60khn9m',
+            Paranoia: 7
+        };
+
+        var userPool;
+        var cognitoUser;
+    </script>
     <div class="body"></div>
     <div class="grad"></div>
     <div class="header">
@@ -17,7 +46,7 @@
     <div class="signup">
         <p>new user</p>
         <br>
-        <input type="text" placeholder="username" id="user"><br>
+        <input type="text" placeholder="username" id="username"><br>
         <input type="password" placeholder="password" id="password"><br>
         <input type="button" id="signup" value="登録">
 
@@ -25,27 +54,31 @@
     <script>
 
         document.getElementById("signup").onclick = function () {
-            const userdata = document.getElementById("user").value;
+            const username = document.getElementById("username").value;
             const passdata = document.getElementById("password").value;
-            const json = {
-                "username": userdata,
-                "password": passdata
+            const authenticationData = {
+                "Username": username,
+                "Password": passdata
             };
-            fetch('http://localhost:3000/signup/', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
+            console.log(authenticationData);
+            var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
+            userpool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(data);
+            var userdata = {
+                Username: username,
+                Pool: userpool
+            };
+            cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userdata);
+            cognitoUser.authenticateUser(authenticationDetails, {
+                onSuccess: function (authresult) {
+                    console.log('access token + ' + authresult.getIdToken().getJwtToken());
                 },
-                body: JSON.stringify(json),
-
-            }).then(response => {
-                return response.json();
-            }).then(res => {
-                console.log(res.items[0]);
-            }).catch(error => {
-                console.log(error);
+                onFailure: function (err) {
+                    alert(err.message);
+                },
             });
         };
+
+
     </script>
 </body>
 

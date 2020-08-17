@@ -59,6 +59,7 @@
             const email = document.getElementById("email").value;
             const passdata = document.getElementById("password").value;
             if(!username | !email | !passdata){
+                alert("Username or Email or Password is null.")
                 return false;
             }
             var namedata = {
@@ -75,6 +76,7 @@
                 } else {
                     // サインアップ成功した場合の挙動
                     console.log("signup success!!")
+                    alert("ユーザー登録申請が完了しました。管理人により承認されるまでお待ちください。")
                     // サインイン成功の場合、次の画面へ遷移
                     location.href = "/";
                 }

@@ -56,6 +56,10 @@
         document.getElementById("login").onclick = function () {
             const username = document.getElementById("user").value;
             const passdata = document.getElementById("password").value;
+            if(!username | !passdata){
+                alert('Username or Password is Null.')
+                return false;
+            }
             const authenticationData = {
                 "Username": username,
                 "Password": passdata
@@ -76,6 +80,11 @@
                     console.log("idToken : " + idToken);
                     console.log("accessToken : " + accessToken);
                     console.log("refreshToken : " + refreshToken);
+
+                    // セッション情報保持
+                    sessionStorage.setItem('username',username);
+                    console.log(sessionStorage.getItem('username'));
+                    
                     // サインイン成功の場合、次の画面へ遷移
                     location.href = "/top";
                 },

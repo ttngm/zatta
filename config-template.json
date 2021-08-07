@@ -1,0 +1,23 @@
+{
+    "develop": {
+        "host": "localhost",
+        "database": "zatta",
+        "user": "root",
+        "password": "12345",
+        "port": 5432
+    },
+    "test": {
+        "host": "localhost",
+        "database": null,
+        "user": "postgres",
+        "password": null,
+        "port": 5432
+    },
+    "product": {
+        "host": "localhost",
+        "database": null,
+        "user": "postgres",
+        "password": null,
+        "port": 5432
+    }
+}

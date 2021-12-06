@@ -34,9 +34,16 @@ router.post('/', function (req, res, next) {
         sql,
         [req.body.keyword],
         (error, results) => {
-            res.json(results);
+            const sql = 'SELECT * FROM keyword';
+            connection.query(
+                sql,
+                (error, results) => {
+                    res.json(results);
+                }
+            );
         }
     );
+
 });
 
 module.exports = router;

@@ -4,8 +4,8 @@ var router = express.Router();
 const cognito = require("amazon-cognito-identity-js");
 
 router.post("/", function (req, res) {
-  var username = JSON.stringify(req.body.username);
-  var passdata = JSON.stringify(req.body.password);
+  var username = req.body.username;
+  var passdata = req.body.password;
 
   console.log(username);
   console.log(passdata);
@@ -35,17 +35,17 @@ router.post("/", function (req, res) {
 
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function (authresult) {
-      //   const idToken = authresult.getIdToken().getJwtToken(); // IDトークン
-      //   const accessToken = authresult.getAccessToken().getJwtToken(); // アクセストークン
-      //   const refreshToken = authresult.getRefreshToken().getToken(); // 更新トークン
+        const idToken = authresult.getIdToken().getJwtToken(); // IDトークン
+        const accessToken = authresult.getAccessToken().getJwtToken(); // アクセストークン
+        const refreshToken = authresult.getRefreshToken().getToken(); // 更新トークン
 
-      //   console.log("idToken : " + idToken);
-      //   console.log("accessToken : " + accessToken);
-      //   console.log("refreshToken : " + refreshToken);
+        console.log("idToken : " + idToken);
+        console.log("accessToken : " + accessToken);
+        console.log("refreshToken : " + refreshToken);
 
-      //   // セッション情報保持
-      //   sessionStorage.setItem("username", username);
-      //   console.log(sessionStorage.getItem("username"));
+        // // セッション情報保持
+        // sessionStorage.setItem("username", username);
+        // console.log(sessionStorage.getItem("username"));
 
       // サインイン成功の場合、一旦trueを返す
       res.json("true");

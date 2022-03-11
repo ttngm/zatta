@@ -48,15 +48,15 @@ router.post('/', function (req, res, next) {
 });
 
 router.delete('/', function (req, res, next) {
-    const deleteSql = 'DELETE FROM keyword WHERE keyword = ?';
+    console.log(req.body.keywords);
+    const deleteSql = 'DELETE FROM keyword WHERE keyword IN (?)';
     connection.query(
         deleteSql,
-        [req.body.keyword],
+        [req.body.keywords],
         (error, results) => {
             res.json("delete success");
         }
     );
-
 });
 
 module.exports = router;

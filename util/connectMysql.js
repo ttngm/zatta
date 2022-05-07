@@ -1,4 +1,4 @@
-const config = require('../config.json').develop
+const config = require('../config.json').db.develop
 const mysql = require('mysql');
 
 
